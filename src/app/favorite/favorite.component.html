@@ -1,0 +1,14 @@
+<style>
+    
+</style>
+
+<p 
+*ngIf="isFavorite"
+style="cursor: pointer;"
+(click)="onClick()">😊</p>
+<ng-content select=".heading"></ng-content>
+<p 
+style="cursor: pointer;"
+*ngIf="!isFavorite"
+(click)="onClick()">😌</p>
+<ng-content></ng-content>
