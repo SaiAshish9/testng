@@ -1,0 +1,15 @@
+<li routerLinkActive="text-success">
+    <a routerLink="/test">
+        Home
+    </a>
+</li>
+
+<li routerLinkActive="text-success">
+    <a 
+    [queryParams]="{page:1,order:'1'}"
+    [routerLink]="['/test/',1,2]">
+        Test
+    </a>
+</li>
+
+<router-outlet></router-outlet>

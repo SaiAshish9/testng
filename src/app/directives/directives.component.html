@@ -1,0 +1,98 @@
+<p>directives works!</p>
+
+<div *ngIf="courses.length>0; else noCourses ">
+    List of courses
+</div>
+
+<div *ngIf="courses.length>0;then courses1  else noCourses ">
+</div>
+<br />
+<button (click)="loadCourses()" class="btn btn-success">Load Courses</button>
+<br />
+<button class="btn btn-success" (click)="onAdd()">Add</button>
+
+<div *ngFor="let course of loopData; index as i; even as isEven;
+trackBy:trackCourse
+">
+    {{i}}- {{course.name}}
+
+    <span *ngIf="isEven">
+        EVEN
+    </span>
+    <button (click)="onRemove(course)" class="btn btn-danger">
+        X
+    </button>
+    <button (click)="onChange(course)" class="btn btn-warning">
+        i
+    </button>
+</div>
+
+<!-- index-> exported value  -->
+<!-- first last even odd -->
+
+<div hidden>
+    Visible
+</div>
+
+<div [hidden]="courses.length>0">
+    lorem
+</div>
+
+<div>
+    Hidden
+</div>
+
+
+<ng-template #courses1>
+    courses
+</ng-template>
+
+<ng-template #noCourses>
+    Hi
+</ng-template>
+
+
+<ul class="nav nav-pills">
+    <li>
+        <button class="btn" [ngClass]="{
+             'btn-secondary':viewMode!='map',
+             'btn-primary':viewMode=='map'
+         }"><a (click)="viewMode='map'">Map
+                View</a></button>
+    </li>
+    <li>
+        <button class="btn" [class.btn-secondary]="viewMode!='list'" [class.btn-primary]="viewMode=='list'"><a
+                (click)="viewMode='list'">List
+                View</a></button>
+    </li>
+    <li>
+        <button (click)="viewMode='default'" class="btn btn-dark">
+            Default
+        </button>
+    </li>
+</ul>
+
+<div [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'map'">Map View Content</div>
+    <div *ngSwitchCase="'list'">List View</div>
+    <div *ngSwitchDefault>Otherwise</div>
+</div>
+
+<button
+[ngStyle]="{
+    'backgroundColor': viewMode!='list'?'green':'red',
+    color:viewMode!='list'?'white':'#333'
+}"
+>
+    Check
+</button>
+
+<p>
+    {{
+        safeTraversal?.name
+    }}
+</p>
+
+
+
+
